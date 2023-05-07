@@ -4,3 +4,5 @@
 # ignore composer vendor directory
 vendor
 
+#ignore composer lock file
+composer.lock
