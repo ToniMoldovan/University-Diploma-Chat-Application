@@ -1,2 +1,6 @@
 # ignore default phpstorm files
 .idea
+
+# ignore composer vendor directory
+vendor
+
