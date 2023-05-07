@@ -1,5 +1,15 @@
 {
+  "autoload": {
+    "psr-4": {
+      "MyApp\\": "websocket-server"
+    }
+  },
   "require": {
     "cboden/ratchet": "^0.4.3"
+  },
+  "config": {
+    "platform": {
+      "php": "7.4"
+    }
   }
 }
