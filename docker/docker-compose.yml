@@ -44,8 +44,8 @@ services:
     container_name: chatapp_phpmyadmin
     environment:
       PMA_HOST: mysql
-      PMA_USER: chatapp
-      PMA_PASSWORD: chatapppassword
+      PMA_USER: admin
+      PMA_PASSWORD: admin
     ports:
       - "6061:80"
     depends_on:
