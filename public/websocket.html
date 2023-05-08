@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>WebSocket Test</title>
@@ -10,13 +10,6 @@
 
   socket.addEventListener('open', function (event) {
     console.log('WebSocket connection is open.');
-    // send message: Hello, my connection id is:
-    socket.send('Hello, my connection id is: ' + socket.id);
-    // current connection id
-    console.log('My connection id is: ', socket.id); // this is undefined
-    let currentConnectionId = socket.id;
-    console.log('My connection id is: ', currentConnectionId); // this is undefined
-
   });
 
   socket.addEventListener('message', function (event) {
