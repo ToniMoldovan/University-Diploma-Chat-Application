@@ -1,5 +1,8 @@
 version: '3.9'
 
+volumes:
+  db_data:
+
 services:
   nginx:
     image: nginx:latest
@@ -44,6 +47,9 @@ services:
       MYSQL_PASSWORD: admin
     volumes:
       - ../mysql/schema.sql:/docker-entrypoint-initdb.d/schema.sql
+      - db_data:/var/lib/mysql # this is where the data is stored
+    ports:
+        - "3308:3306" # host:container (mysql)
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin:latest
