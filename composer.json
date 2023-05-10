@@ -1,11 +1,13 @@
 {
   "autoload": {
     "psr-4": {
-      "MyApp\\": "websocket-server"
+      "MyApp\\": "websocket-server",
+      "app\\": "app/"
     }
   },
   "require": {
-    "cboden/ratchet": "^0.4.3"
+    "cboden/ratchet": "^0.4.3",
+    "klein/klein": "v2.1.2"
   },
   "config": {
     "platform": {
