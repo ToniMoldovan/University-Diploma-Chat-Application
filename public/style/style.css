@@ -1,0 +1,137 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/*
+Color pallete:
+#264653 (dark blue)
+#2A9D8F (teal)
+#E9C46A (light mustard)
+#F4A261 (light coral)
+*/
+
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/*#region Navbar*/
+.navbar {
+    background-color: #264653;
+}
+
+/* Brand link */
+.navbar-brand {
+    color: #E9C46A;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.navbar-brand:hover {
+    color: #E9C46A;
+}
+
+/* Links */
+.nav-link {
+    color: #f8f9fa;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+}
+
+.nav-link:hover {
+    color: #2A9D8F;
+}
+
+/* Active link */
+.nav-item.active .nav-link {
+    color: #2A9D8F;
+    font-weight: 700;
+}
+
+/* Register/Login button */
+.btn-outline-success {
+    border-color: #E9C46A;
+    color: #E9C46A;
+}
+
+.btn-outline-success:hover {
+    background-color: #E9C46A;
+    border-color: #E9C46A;
+}
+
+/* About button */
+.btn-outline-info {
+    border-color: #f8f9fa;
+    color: #f8f9fa;
+}
+
+.btn-outline-info:hover {
+    background-color: #f8f9fa;
+    border-color: #f8f9fa;
+}
+
+/*#endregion Navbar*/
+
+/*#region Hero*/
+.hero {
+    background: url('../images/hero_bg_image.jpg') no-repeat fixed right;
+    background-size: cover;
+    background-color: rgba(244, 162, 97, 0.4);
+    /*add overlay*/
+    background-blend-mode: overlay;
+    color: #fff;
+    padding: 150px 0;
+}
+
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 3em;
+    margin-bottom: 30px;
+}
+
+.hero p {
+    font-size: 1.5em;
+    margin-bottom: 50px;
+}
+
+.btn-get-started {
+    background-color: #2a9d8f;
+    border-color: #2a9d8f;
+    color: #fff;
+    padding: 15px 30px;
+    font-size: 24px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    margin-top: 20px;
+    margin-bottom: 50px;
+}
+
+.btn-get-started:hover {
+    background-color: #fff;
+    border-color: #2a9d8f;
+    color: #2a9d8f;
+}
+
+
+
+/*#endregion Hero*/
+
+.bg-image1 {
+    background-image: url('../images/hero_bg_image.jpg');
+    background-size: cover;
+    height: 400px;
+}
+
+.bg-image2 {
+    background-image: url('../images/hero_bg_image.jpg');
+    background-size: cover;
+    height: 400px;
+}
