@@ -8,6 +8,7 @@ CREATE TABLE `users` (
      `last_name` VARCHAR(50) NOT NULL,
      `profile_picture` VARCHAR(255) DEFAULT NULL,
      `status` ENUM('online', 'offline') NOT NULL DEFAULT 'offline',
+     `is_admin` ENUM('true', 'false') NOT NULL DEFAULT 'false',
      `last_active` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
      `account_created` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
      PRIMARY KEY (`user_id`),
