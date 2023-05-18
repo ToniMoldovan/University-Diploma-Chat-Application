@@ -4,9 +4,24 @@ namespace app\controllers;
 
 class HomeController
 {
-    public function index()
+    public function index($request, $response)
     {
-        require __DIR__ . '/../views/home.php';
+        if (isset($_SESSION['user_id'])) {
+            require __DIR__ . '/../views/home.php';
+        }
+        else {
+            require __DIR__ . '/../views/login.php';
+        }
+    }
+
+    public function home($request, $response)
+    {
+        if (isset($_SESSION['user_id'])) {
+            $response->redirect('/');
+        }
+        else {
+            $response->redirect('/');
+        }
     }
 
     public function about()
