@@ -266,7 +266,7 @@ class UserModel
                 $stmt->bindParam(':user_id', $this->id);
                 $stmt->execute();
 
-                $_SESSION['success_message'] = 'Login successful!';
+                //$_SESSION['success_message'] = 'Login successful!';
                 header('Location: /home');
                 exit();
             } else {
