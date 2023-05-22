@@ -3,6 +3,7 @@
 require_once __DIR__ . '/../vendor/autoload.php';
 
 use app\controllers\AuthController;
+use app\controllers\ChatroomController;
 use app\controllers\HomeController;
 use Klein\Klein;
 
@@ -19,6 +20,12 @@ $router->respond('GET', '/404', [new HomeController(), 'notFound']);
 $router->respond('POST', '/register-user', [new AuthController(), 'register']);
 $router->respond('POST', '/login-user', [new AuthController(), 'login']);
 $router->respond('GET', '/logout-user', [new AuthController(), 'logout']);
+
+/*Chatroom routes*/
+$router->respond('GET', '/rooms/create', [new ChatroomController(), 'createRoom']);
+$router->respond('GET', '/check-tag', [new ChatroomController(), 'tagExists']);
+$router->respond('GET', '/check-room-title', [new ChatroomController(), 'nameExists']);
+$router->respond('POST', '/create-room', [new ChatroomController(), 'createNewRoom']);
 
 // route for 404 REDIRECT to a 404 page
 $router->onHttpError(function ($code, $router) {
