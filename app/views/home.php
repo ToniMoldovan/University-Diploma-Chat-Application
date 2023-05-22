@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>My Website</title>
+    <title>CircleTalk - Home</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css" integrity="sha256-2XFplPlrFClt0bIdPgpz8H7ojnk10H69xRqd9+uTShA=" crossorigin="anonymous" />
-
-    <link rel="stylesheet" href="style/style.css">
+    <!--icon browser-->
+    <link rel="icon" href="<?php echo $GLOBALS['assets'] . 'images/chat-app-icon.png'; ?>" type="image/png" sizes="16x16">
+    <link rel="stylesheet" href="<?php echo $GLOBALS['assets'] . 'style/style.css'; ?>">
 </head>
 <body>
 <?php include 'components/navbar.php'; ?>
@@ -17,7 +18,7 @@
                 <div class="sidebar">
                     <div class="widget border-0">
                         <div class="search">
-                            <input class="form-control" type="text" placeholder="Search Keywords">
+                            <input class="form-control" type="text" placeholder="Search here">
                         </div>
                     </div>
                     <div class="widget">
@@ -290,7 +291,8 @@
 
 
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
