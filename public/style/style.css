@@ -13,6 +13,18 @@ body {
     background:#F5F5F5;
 }
 
+.spacer-lg {
+    height: 60px;
+}
+
+.spacer-md {
+    height: 40px;
+}
+
+.spacer-sm {
+    height: 30px;
+}
+
 /*#region Login&Register*/
 #login-page{
     background-image: url('https://getwallpapers.com/wallpaper/full/b/2/7/24187.jpg');
@@ -107,11 +119,13 @@ a.add-btn-like-properties:hover {
 .navbar-brand {
     font-weight: bold;
     font-size: 1.5rem;
-    margin-right: 2rem;
+    margin-left: 1.5rem;
 }
 
 .navbar .nav-link {
     color: #fff;
+    font-size: 18px;
+    font-weight: bold;
 }
 
 .navbar .nav-link:hover {
@@ -120,10 +134,14 @@ a.add-btn-like-properties:hover {
 
 .navbar .dropdown-menu {
     background-color: #264653;
+    border: none;
+    border-radius: 0;
 }
 
 .navbar .dropdown-item {
     color: #fff;
+    font-size: 18px;
+    font-weight: bold;
 }
 
 .navbar .dropdown-item:hover {
@@ -166,7 +184,6 @@ a.add-btn-like-properties:hover {
     overflow: hidden;
 }
 /*#endregion Navbar*/
-
 
 /*#region Main*/
 /* Candidate List */
@@ -540,3 +557,63 @@ a.add-btn-like-properties:hover {
     margin-top: 10px;
 }
 /*#endregion Main*/
+
+/*#region CreateRoom*/
+h1#create-a-room-title {
+    font-size: 44px;
+    font-weight: 600;
+    color: #212529;
+}
+
+#create-new-room-form {
+    padding: 20px;
+    border: 1px solid #eeeeee;
+    border-radius: 3px;
+}
+
+#create-new-room-form .form-group {
+    margin-bottom: 20px;
+}
+
+#create-new-room-form .form-group label {
+    font-weight: 600;
+    color: #212529;
+}
+
+#create-new-room-form .form-group input {
+    height: 45px;
+    border-radius: 3px;
+    border: 1px solid #eeeeee;
+    padding: 0 15px;
+}
+
+/*Checkbox input bigger*/
+#create-new-room-form .form-check input[type=checkbox] {
+    height: 20px;
+    width: 20px;
+    border-radius: 3px;
+    border: 1px solid #eeeeee;
+    padding: 0 15px;
+}
+
+#create-new-room-form .form-check label {
+    font-weight: 600;
+    color: #212529;
+    margin-left: 10px;
+    margin-top: 4px;
+}
+
+
+
+#create-new-room-form .form-group .submit-btn-form {
+    height: 45px;
+    border-radius: 3px;
+    border: 1px solid #eeeeee;
+    padding: 0 15px;
+    background-color: #2a9d8f;
+}
+
+#create-new-room-form .form-group .submit-btn-form:hover {
+    background-color: #21867a;
+}
+/*#endregion CreateRoom*/
