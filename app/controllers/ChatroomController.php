@@ -15,6 +15,20 @@ class ChatroomController
         }
     }
 
+    public function loadRooms($request, $response, $service, $app)
+    {
+        $tempChatroom = new ChatroomModel();
+        $rooms = $tempChatroom->loadRooms();
+
+        // Assign rooms to a service property
+        $service->rooms = $rooms;
+
+        // render the view
+        return $service->render(__DIR__ . '/../views/rooms.php');
+    }
+
+
+
     public function createNewRoom($request, $response)
     {
         if (!isset($_SESSION['user_id'])) {
@@ -36,6 +50,43 @@ class ChatroomController
         $tempChatroom->setRoomPassword($request->room_password);
 
         $tempChatroom->createRoom($response);
+    }
+
+    public function joinRoom($request, $response, $service, $app) {
+        if (!isset($_SESSION['user_id'])) {
+            echo "You must be logged in to enter a room";
+            return;
+        }
+
+        // Check if the room tag exists
+        $tempChatroom = new ChatroomModel();
+        $tempChatroom->setChatroomTag($request->tag);
+
+        if(!$tempChatroom->tagExists()) {
+            echo "Room does not exist";
+            return;
+        }
+
+        $service->chatroom_tag = $request->tag;
+        $service->data = $tempChatroom->getDataByTag();
+
+        // render the view
+        $service->render(__DIR__ . '/../views/chatroom.php');
+    }
+
+    public function sendMessage($request, $response, $service, $app) {
+
+    }
+
+    public function getRoomMessageHistory($request, $response, $service, $app) {
+        $tempChatroom = new ChatroomModel();
+        $tempChatroom->setChatroomTag($request->tag);
+        $result = $tempChatroom->getDataByTag();
+
+        $tempChatroom->setId($result["chatroom_id"]);
+        $messageHistory = $tempChatroom->getMessageHistory();
+
+        return $messageHistory;
     }
 
     public function tagExists($request) {

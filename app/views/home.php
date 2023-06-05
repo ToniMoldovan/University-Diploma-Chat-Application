@@ -60,7 +60,7 @@
             <div class="col-lg-9">
                 <div class="row mb-4">
                     <div class="col-12">
-                        <h6 class="mb-0">Showing 1-10 of <span class="text-primary">28 Candidates</span></h6>
+                        <h6 class="mb-0">There are ... results.</h6>
                     </div>
                 </div>
                 <div class="job-filter mb-4 d-sm-flex align-items-center">

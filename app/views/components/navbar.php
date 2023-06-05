@@ -10,7 +10,7 @@
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-                <a class="nav-link" href="#">Rooms</a>
+                <a class="nav-link" href="/rooms">Rooms</a>
             </li>
             <li class="nav-item ml-lg-2">
                 <a class="nav-link" href="/rooms/create">New Room</a>

@@ -16,5 +16,4 @@ $server = IoServer::factory(
     '0.0.0.0'
 );
 
-
 $server->run();

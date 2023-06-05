@@ -26,6 +26,10 @@ $router->respond('GET', '/rooms/create', [new ChatroomController(), 'createRoom'
 $router->respond('GET', '/check-tag', [new ChatroomController(), 'tagExists']);
 $router->respond('GET', '/check-room-title', [new ChatroomController(), 'nameExists']);
 $router->respond('POST', '/create-room', [new ChatroomController(), 'createNewRoom']);
+$router->respond('GET', '/rooms', [new ChatroomController(), 'loadRooms']);
+$router->respond('GET', '/room/[:tag]', [new ChatroomController(), 'joinRoom']);
+$router->respond('GET', '/getMessageHistory', [new ChatroomController(), 'getRoomMessageHistory']);
+$router->respond('POST', '/sendMessage', [new ChatroomController(), 'sendMessage']);
 
 // route for 404 REDIRECT to a 404 page
 $router->onHttpError(function ($code, $router) {
@@ -33,7 +37,5 @@ $router->onHttpError(function ($code, $router) {
         $router->response()->redirect('/404');
     }
 });
-
-
 
 $router->dispatch();

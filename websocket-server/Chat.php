@@ -5,6 +5,7 @@ use Ratchet\ConnectionInterface;
 
 class Chat implements MessageComponentInterface {
     protected $clients;
+    protected array $rooms = [];
 
     public function __construct() {
         $this->clients = new \SplObjectStorage;
@@ -20,15 +21,27 @@ class Chat implements MessageComponentInterface {
         //echo "[Server]: New connection! ({$conn->resourceId})\n";
     }
 
-    public function onMessage(ConnectionInterface $from, $msg) {
-        $numRecv = count($this->clients) - 1;
-        echo sprintf('[Server]: Connection %d sending message "%s" to %d other connection%s' . "\n"
-            , $from->resourceId, $msg, $numRecv, $numRecv == 1 ? '' : 's');
+    private function subscribe(ConnectionInterface $client, $room) {
+        $this->rooms[$room][] = $client;
+        echo "New client subscribed to room {$room}\n";
+    }
 
-        foreach ($this->clients as $client) {
+    public function onMessage(ConnectionInterface $from, $msg) {
+        $data = json_decode($msg);
+        switch ($data->command) {
+            case "subscribe":
+                $this->subscribe($from, $data->room);
+                break;
+            case "message":
+                $this->sendMessage($from, $data->room, $data->message);
+                break;
+        }
+    }
+
+    private function sendMessage(ConnectionInterface $from, $room, $message) {
+        foreach ($this->rooms[$room] as $client) {
             if ($from !== $client) {
-                // The sender is not the receiver, send to each client connected
-                $client->send($msg);
+                $client->send($message);
             }
         }
     }

@@ -2,6 +2,8 @@
 
 namespace app\models;
 
+use PDO;
+
 class ChatroomModel
 {
     private $id = -1;
@@ -115,6 +117,19 @@ class ChatroomModel
         $this->room_password = $room_password;
     }
 
+    public function loadRooms()
+    {
+        global $pdo;
+
+        $query = "SELECT * FROM chatrooms";
+        $stmt = $pdo->prepare($query);
+        $stmt->execute();
+        $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        // return data as json for jquery to handle
+        return $data;
+    }
+
     public function tagExists() {
         global $pdo;
 
@@ -129,6 +144,28 @@ class ChatroomModel
         } else {
             return false;
         }
+    }
+
+    public function getMessageHistory() {
+        global $pdo;
+
+        $query = "SELECT * FROM messages WHERE chatroom_id = :chatroom_id";
+        $stmt = $pdo->prepare($query);
+        $stmt->bindValue(':chatroom_id', $this->id);
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    }
+
+    public function getDataByTag() {
+        global $pdo;
+
+        $query = "SELECT * FROM chatrooms WHERE chatroom_tag = :tag";
+        $stmt = $pdo->prepare($query);
+        $stmt->bindValue(':tag', $this->chatroom_tag);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
     public function nameExists() {
