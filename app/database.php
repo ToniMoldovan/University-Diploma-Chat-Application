@@ -2,10 +2,10 @@
 
 // Database configuration
 $dbConfig = [
-    'host' => 'mysql', // Replace with your database host
-    'dbname' => 'chatapp', // Replace with your database name
-    'username' => 'admin', // Replace with your database username
-    'password' => 'admin', // Replace with your database password
+    'host' => 'mysql',
+    'dbname' => 'chatapp',
+    'username' => 'admin',
+    'password' => 'admin',
 ];
 
 // PDO database connection

@@ -30,6 +30,7 @@ $router->respond('GET', '/rooms', [new ChatroomController(), 'loadRooms']);
 $router->respond('GET', '/room/[:tag]', [new ChatroomController(), 'joinRoom']);
 $router->respond('GET', '/getMessageHistory', [new ChatroomController(), 'getRoomMessageHistory']);
 $router->respond('POST', '/sendMessage', [new ChatroomController(), 'sendMessage']);
+$router->respond('POST', '/getMessages/[:tag]', [new ChatroomController(), 'getMessages']);
 
 // route for 404 REDIRECT to a 404 page
 $router->onHttpError(function ($code, $router) {

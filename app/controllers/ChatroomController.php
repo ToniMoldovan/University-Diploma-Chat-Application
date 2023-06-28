@@ -74,6 +74,14 @@ class ChatroomController
         $service->render(__DIR__ . '/../views/chatroom.php');
     }
 
+    public function getMessages($request, $response, $service, $app) {
+        $tempChatroom = new ChatroomModel();
+        $tempChatroom->setChatroomTag($request->tag);
+        $result = $tempChatroom->getMessageHistory();
+
+        return $result;
+    }
+
     public function sendMessage($request, $response, $service, $app) {
 
     }

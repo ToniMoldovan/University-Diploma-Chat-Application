@@ -6,6 +6,12 @@ use PDO;
 
 class ChatroomModel
 {
+    private $my_pdo;
+
+    public function __construct() {
+        $this->my_pdo = new PDO('mysql:host=mysql;dbname=chatapp', 'admin', 'admin');
+    }
+
     private $id = -1;
     private $chatroom_title;
     private $chatroom_tag;
@@ -149,13 +155,12 @@ class ChatroomModel
     public function getMessageHistory() {
         global $pdo;
 
-        $query = "SELECT * FROM messages WHERE chatroom_id = :chatroom_id";
+        $query = "SELECT * FROM messages WHERE chatroom_tag = :chatroom_tag";
         $stmt = $pdo->prepare($query);
-        $stmt->bindValue(':chatroom_id', $this->id);
+        $stmt->bindValue(':chatroom_tag', $this->chatroom_tag);
         $stmt->execute();
 
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
-
+        return json_encode($stmt->fetchAll(PDO::FETCH_ASSOC));
     }
 
     public function getDataByTag() {
@@ -205,6 +210,61 @@ class ChatroomModel
             $response->redirect('/rooms/create');
         } else {
             $_SESSION['error_message'] = 'Chatroom creation failed. Please try again.';
+        }
+    }
+
+    private function checkIfUserIsInsideRoom($user_id, $room_tag)
+    {
+        $query = "SELECT * FROM members_in_chatrooms WHERE user_id = :user_id AND chatroom_tag = :chatroom_tag";
+        $stmt = $this->my_pdo->prepare($query);
+        $stmt->bindValue(':user_id', $user_id);
+        $stmt->bindValue(':chatroom_tag', $room_tag);
+        $stmt->execute();
+        $result = $stmt->fetch();
+
+        if ($result) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function addUserToRoom($user_id, $room_tag)
+    {
+        // check if user is already in room
+        if ($this->checkIfUserIsInsideRoom($user_id, $room_tag)) {
+            return -1;
+        }
+
+        $query = "INSERT INTO members_in_chatrooms (user_id, chatroom_tag) VALUES (:user_id, :chatroom_tag)";
+        $stmt = $this->my_pdo->prepare($query);
+        $stmt->bindValue(':user_id', $user_id);
+        $stmt->bindValue(':chatroom_tag', $room_tag);
+
+        if ($stmt->execute()) {
+            return 1;
+        } else {
+            return 2;
+        }
+    }
+
+    public function storeMessage($user_id, $room_tag, $message)
+    {
+        $query = "INSERT INTO messages (sender_id, chatroom_tag, message_body) VALUES (:sender_id, :chatroom_tag, :message_body)";
+        $stmt = $this->my_pdo->prepare($query);
+        $stmt->bindValue(':sender_id', $user_id);
+        $stmt->bindValue(':chatroom_tag', $room_tag);
+        $stmt->bindValue(':message_body', $message);
+
+        try {
+            if ($stmt->execute()) {
+                return 1;
+            } else {
+                return 2;
+            }
+        } catch (\PDOException $e) {
+            error_log($e->getMessage());
+            return 2;
         }
     }
 

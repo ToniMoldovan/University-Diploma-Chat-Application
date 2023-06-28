@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="<?php echo $GLOBALS['assets'] . 'style/style.css'; ?>">
     <link rel="stylesheet" href="<?php echo $GLOBALS['assets'] . 'style/chatroom.css'; ?>">
 </head>
-<body data-room-tag="<?php echo $this->chatroom_tag; ?>">
+<body data-room-tag="<?php echo $this->chatroom_tag; ?>" data-user-id="<?php echo $_SESSION["user_id"]; ?>">
 <?php include 'components/navbar.php'; ?>
 
 <main>
@@ -23,8 +23,9 @@
             <div class="col-5 px-0">
                 <div class="bg-white">
 
-                    <div class="bg-gray px-4 py-2 bg-light">
-                        <p class="h5 mb-0 py-1" id="participants_counter">People in this Circle</p>
+                    <div class="bg-gray px-4 py-2 bg-light" >
+                        <p style="display: inline-block" class="h5 mb-0 py-1" id="participants_counter">People in this Circle</p>
+                        <span>Leave room</span>
                     </div>
 
                     <div class="messages-box">
@@ -48,32 +49,15 @@
             <!-- Chat Box-->
             <div class="col-7 px-0">
                 <div class="px-4 py-5 chat-box bg-white">
-                    <!-- Sender Message-->
-                    <div class="media w-50 mb-3"><img src="https://bootstrapious.com/i/snippets/sn-chat/avatar.svg" alt="user" width="50" class="rounded-circle">
-                        <div class="media-body ml-3">
-                            <div class="bg-light rounded py-2 px-3 mb-2">
-                                <p class="text-small mb-0 text-muted">Test which is a new approach all solutions est which is a new approach all solutions est which is a new approach all solutions</p>
-                            </div>
-                            <p class="small text-muted">12:00 PM | Aug 13</p>
-                        </div>
-                    </div>
 
-                    <!-- Reciever Message-->
-                    <div class="media w-50 ml-auto mb-3">
-                        <div class="media-body">
-                            <div class="bg-primary rounded py-2 px-3 mb-2">
-                                <p id="current_user_chat_message" class="text-small mb-0 text-white">Test which is a new approach to have all solutions</p>
-                            </div>
-                            <p class="small text-muted">12:00 PM | Aug 13</p>
-                        </div>
-                    </div>
                 </div>
                     <!-- Typing area -->
-                <form action="#" class="bg-light">
+                <form id="chatForm" class="bg-light">
                         <div class="input-group">
-                            <input type="text" id="message-body" style="padding-bottom: 10px;padding-top: 14px;" placeholder="Type a message" aria-describedby="button-addon2" class="form-control rounded-0 border-0 bg-light">
+                            <input type="hidden" >
+                            <input type="text" id="messageBody" style="padding-bottom: 10px;padding-top: 14px;" placeholder="Type a message" aria-describedby="button-addon2" class="form-control rounded-0 border-0 bg-light">
                             <div class="input-group-append">
-                                <button id="sendButton" class="btn btn-link"> <i class="fa fa-paper-plane"></i></button>
+                                <button id="sendButton" type="submit" class="btn btn-link"> <i class="fa fa-paper-plane"></i></button>
                             </div>
                         </div>
                     </form>
